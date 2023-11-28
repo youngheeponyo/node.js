@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://localhost:5000/profile" method="post" enctype="multipart/form-data">
+        <input type="file" name="avatar">
+        <button type="submit">단건등록</button>
+    </form>
+    <br>
+    <form action="http://localhost:5000/photos" method="post" enctype="multipart/form-data">
+        <input type="file" name="photos" multiple>
+        <input type="file" name="photos" multiple>
+        <button type="submit">여러건 등록</button>
+    </form>
+</body>
+</html>
