@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage : storage });
 
 app.post('/profile',upload.single('avatar'),(req,res)=>{
-    console.log(req.file);
+    console.log(req.file);  //단건 조회는 file 여러건 등록은 files
     console.log(req.body);
 });
 
