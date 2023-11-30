@@ -14,7 +14,8 @@
         }
     }
 </script>
-<style>
+<!--scoped를 설정하면 여기에있는 p에만 스타일 적용-->
+<style scoped>
     p{
         color:white;
         background-color:black;
