@@ -1,4 +1,6 @@
 import {createStore} from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
+
 const store = createStore({
     state(){
         return{
@@ -24,12 +26,19 @@ const store = createStore({
         addProduct(state,info){  
             state.cart.push(info);
         }
-    }
-    // actions : { //비동기적 변이름 다름
-    //     addProduct(state,info){     //두번째는 컴포넌트가 넘기는 데이터가 들어가는 자리
-
-    //     }
-    //}
+    },
+    actions : { //비동기적 변이름 다름
+         addProduct(context,info){     //첫번째는 instance 전체가 넘어옴(정의해놓은 전체(state,getters,mutations)), 두번째는 컴포넌트가 넘기는 데이터가 들어가는 자리
+            setTimeout(()=>{
+                context.commit('addProduct',info);
+            },1000);
+        }
+    },
+    plugins : [
+        createPersistedState({
+            paths : ['cart']
+        })
+    ]
 });
 
 export default store;

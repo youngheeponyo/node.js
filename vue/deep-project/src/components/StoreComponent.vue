@@ -19,8 +19,8 @@
                 
             </thead>
             <tbody>
-                <tr :key="idx" v-for="(info,idx) in productList">
-                    <td>{{ info.category }}</td>
+                <tr :key="idx" v-for="(info,idx) in productList">   <!--store에 저장된 데이터는 실시간으로 변경을 감지하여 보여줌-->
+                    <td>{{ info.category }}</td>    
                     <td>{{ info.product_id }}</td>
                     <td>{{ info.product_name }}</td>
                 </tr>
@@ -54,7 +54,8 @@ export default {
                 product_name : this.productInfo.product_name,
                 category : this.productInfo.category
             }
-            this.$store.commit('addProduct',obj);      //넘겨야할 정보는 두번째 매개변수로 보내주면 됨
+            //this.$store.commit('addProduct',obj);      //넘겨야할 정보는 두번째 매개변수로 보내주면 됨
+            this.$store.dispatch('addProduct',obj);      //commit은 mutations, dispatch는 actions를 호출할 때 사용
         }
     }
 }
