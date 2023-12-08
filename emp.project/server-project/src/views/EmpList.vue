@@ -1,12 +1,11 @@
 <template>
-    <div>
-        <table border="1">
+    <div class="container">
+        <table border="1" class="table">
             <caption>Total : {{ count }}</caption>
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>FirstName</th>
-                    <th>LastName</th>
+                    <th>Name</th>
                     <th>Gender</th>
                     <th>HireDate</th>
                     <th>Salary</th>
@@ -15,12 +14,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr :key="idx" v-for="(emp,idx) in empList">
+                <tr :key="idx" v-for="(emp,idx) in empList" @click="empInfo(emp.emp_no)">
                     <td>{{ emp.emp_no }}</td>
-                    <td>{{ emp.first_name }}</td>
-                    <td>{{ emp.last_name }}</td>
+                    <td>{{ emp.first_name + ' ' + emp.last_name }}</td>
                     <td>{{ emp.gender }}</td>
-                    <td>{{ dateFormat(emp.hire_date) }}</td>
+                    <td>{{ $dateFormat(emp.hire_date,'yyyy-MM-dd') }}</td>
                     <td>{{ emp.salary }}</td>
                     <td>{{ emp.dept_no }}</td>
                     <td>{{ emp.dept_name }}</td>
@@ -53,13 +51,8 @@ export default {
             let list = result.data;
             this.empList = list;
         },
-        dateFormat(value){
-            //yyyy년 MM월 dd일
-            let date = new Date(value);
-            let year = date.getFullYear();
-            let month = ('0'+(date.getMonth()+1)).slice(-2);
-            let day = ('0'+date.getDate()).slice(-2);
-            return `${year}년 ${month}월 ${day}일`
+        empInfo(eno){
+            this.$router.push({path : '/EmpInfo', query : {emp_no : eno}})
         }
     }
 }

@@ -21,7 +21,7 @@ const query = async(filed,values)=>{
             }
         })
     })
-}
+};
 
 module.exports = {
     query

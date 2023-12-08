@@ -16,6 +16,11 @@ app.get('/emp',async(req,res)=>{
     let list = await mysql.query('empList');
     res.send(list);
 });
+
+app.get('/depts',async(req,res)=>{
+    let list = await mysql.query('deptList');
+    res.send(list);
+})
 //단건조회
 app.get('/emp/:no',async(req,res)=>{
     let data = req.params.no;
@@ -33,7 +38,7 @@ app.post('/emp',async(req,res)=>{
     let result = await mysql.query('insertEmp',emp);
     let result2 = await mysql.query('insertDept',dept);
     let result3 = await mysql.query('insertSal',sal);
-    res.send[result,result2,result3];
+    res.send([result,result2,result3]);
 });
 //수정
 app.patch('/emp/:no',async(req,res)=>{
